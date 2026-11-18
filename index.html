@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>LVL 11 Salon | Hair Salon in Phoenix, AZ: Cuts, Color, Balayage & Extensions</title>
+    <meta
+      name="description"
+      content="LVL 11 Salon is an independent hair salon on 16th Street in Phoenix, Arizona. Haircuts, styling, color, balayage, highlights and extensions. Walk-ins welcome, appointments preferred. Call (602) 975-6541."
+    />
+    <!--
+      CONCEPT BUILD: kept out of search indexes so this unofficial prototype never
+      competes with the salon's real site. Remove the noindex line at launch.
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://lvl11phx.com/" />
+    <meta name="theme-color" content="#292C2A" />
+    <meta name="geo.region" content="US-AZ" />
+    <meta name="geo.placename" content="Phoenix" />
+    <meta name="geo.position" content="33.505391;-112.047822" />
+    <meta name="ICBM" content="33.505391, -112.047822" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LVL 11 Salon" />
+    <meta property="og:title" content="LVL 11 Salon | Hair, turned up. Phoenix, AZ" />
+    <meta property="og:description" content="Cuts, color, balayage, highlights and extensions on 16th Street in Phoenix. Good hair. Great people." />
+    <meta property="og:url" content="https://lvl11phx.com/" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LVL 11 Salon brush-lettered logo over blonde hair against a blue sky" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Hero image: start fetching before JS boots -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      imagesrcset="/images/hero-640.avif 640w, /images/hero-960.avif 960w, /images/hero-1440.avif 1440w, /images/hero-2000.avif 2000w, /images/hero-2400.avif 2400w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "name": "LVL 11 Salon",
+        "url": "https://lvl11phx.com/",
+        "telephone": "+1-602-975-6541",
+        "email": "lvl11phx@gmail.com",
+        "image": "https://lvl11phx.com/og-image.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4626 N 16th St, Suite 104",
+          "addressLocality": "Phoenix",
+          "addressRegion": "AZ",
+          "postalCode": "85016",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 33.505390598409804, "longitude": -112.0478217670837 },
+        "areaServed": { "@type": "City", "name": "Phoenix" },
+        "sameAs": ["https://www.instagram.com/lvl11phx"],
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "09:00", "closes": "17:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:00", "closes": "19:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday"], "opens": "09:00", "closes": "21:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "18:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "17:00" }
+        ],
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Haircuts & Styling" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hair Color & Blonding" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Balayage & Highlights" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hair Extensions" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hair Treatments & Consultations" } }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        LVL 11 Salon · 4626 N 16th St, Suite 104, Phoenix, AZ 85016 · <a href="tel:+16029756541">(602) 975-6541</a> ·
+        <a href="mailto:lvl11phx@gmail.com">lvl11phx@gmail.com</a>
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
