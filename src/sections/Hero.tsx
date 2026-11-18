@@ -9,7 +9,7 @@ import { useInView, useReducedMotion } from '../lib/hooks'
 export function Hero() {
   const reduced = useReducedMotion()
   const mediaRef = useRef<HTMLDivElement>(null)
-  const copyRef = useInView<HTMLDivElement>({ threshold: 0 })
+  const copyRef = useInView<HTMLDivElement>({ rootMargin: "0px" })
 
   // Gentle parallax: the photo drifts slower than the page
   useEffect(() => {

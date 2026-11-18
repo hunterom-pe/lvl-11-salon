@@ -50,9 +50,9 @@ export function Work() {
                 />
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/60 to-transparent opacity-80 transition-opacity duration-500 lg:opacity-0 lg:group-hover:opacity-100"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/70 to-transparent"
                 />
-                <p className="eyebrow absolute bottom-3 left-3 text-[0.65rem] text-ivory transition-transform duration-500 ease-out-expo lg:translate-y-8 lg:group-hover:translate-y-0">
+                <p className="eyebrow absolute bottom-3 left-3 text-[0.65rem] text-ivory lg:bottom-4 lg:left-4 lg:text-[0.7rem]">
                   {w.label}
                 </p>
               </Reveal>

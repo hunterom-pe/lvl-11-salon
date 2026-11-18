@@ -2,11 +2,14 @@ import { Arrow } from '../components/Logo'
 import { Photo } from '../components/Photo'
 import { Eyebrow, Line, Reveal } from '../components/Reveal'
 import { booking, services } from '../content/site'
+import { useMediaQuery } from '../lib/hooks'
 
 // Desktop stagger: each column drops a little lower than the last
 const OFFSETS = ['lg:mt-0', 'lg:mt-28', 'lg:mt-10', 'lg:mt-40']
 
 export function Services() {
+  // the rail only scrolls below the lg breakpoint; only then is it a keyboard stop
+  const isRail = !useMediaQuery('(min-width: 64rem)')
   return (
     <section id="services" aria-labelledby="services-title" className="grain bg-ivory py-20 sm:py-28 lg:py-36">
       <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-10">
@@ -33,9 +36,9 @@ export function Services() {
         {/* Mobile: swipeable rail. Desktop: staggered editorial columns. */}
         {/* The scroll container is focusable so keyboard users can scroll the rail on small screens */}
         <div
-          role="region"
-          aria-label="Services list"
-          tabIndex={0}
+          role={isRail ? 'region' : undefined}
+          aria-label={isRail ? 'Services list' : undefined}
+          tabIndex={isRail ? 0 : undefined}
           className="-mx-4 mt-14 snap-x snap-mandatory scroll-px-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:mt-20 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
         >
         <ol className="flex gap-4 lg:grid lg:grid-cols-4 lg:gap-8">
@@ -54,7 +57,7 @@ export function Services() {
                   </span>
                 </Reveal>
                 <Reveal delay={i * 90 + 120}>
-                  <h3 className="display mt-5 text-[2.6rem] leading-[0.88] sm:text-[3rem] lg:text-[clamp(2.4rem,3.2vw,3.4rem)]">
+                  <h3 className="display mt-5 text-[2.6rem] leading-[0.88] [overflow-wrap:break-word] sm:text-[3rem] lg:text-[clamp(1.85rem,3vw,3.4rem)]">
                     {s.title}
                   </h3>
                   <p className="mt-3 max-w-[26rem] text-[0.98rem] leading-relaxed text-charcoal/75">{s.line}</p>

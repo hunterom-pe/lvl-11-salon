@@ -142,8 +142,16 @@
   }
 }
 
-/* ——— Motion ——— */
-.reveal {
+/* ——— Motion ———
+ * Content is visible by default. Entrance states only apply when <html> has the
+ * `motion` class, which an inline script in index.html adds only when JS runs,
+ * IntersectionObserver exists and the visitor has not asked for reduced motion.
+ *
+ * Image reveals clip the wrapper's CHILDREN, never the observed wrapper itself:
+ * a fully clipped target has zero intersection area, so IntersectionObserver
+ * would never report it as visible and it would stay hidden.
+ */
+.motion .reveal {
   opacity: 0;
   transform: translate3d(0, 2.25rem, 0);
   transition:
@@ -151,25 +159,25 @@
     transform 1.2s var(--ease-out-expo);
   transition-delay: var(--delay, 0ms);
 }
-.reveal[data-inview='true'],
-[data-inview='true'] .reveal {
+.motion .reveal[data-inview='true'],
+.motion [data-inview='true'] .reveal {
   opacity: 1;
   transform: none;
 }
-.reveal-img {
+.motion .reveal-img > * {
   clip-path: inset(100% 0 0 0);
   transition: clip-path 1.4s var(--ease-in-out-quart);
   transition-delay: var(--delay, 0ms);
 }
-.reveal-img img {
+.motion .reveal-img img {
   transform: scale(1.18);
   transition: transform 2s var(--ease-out-expo);
   transition-delay: var(--delay, 0ms);
 }
-.reveal-img[data-inview='true'] {
+.motion .reveal-img[data-inview='true'] > * {
   clip-path: inset(0 0 0 0);
 }
-.reveal-img[data-inview='true'] img {
+.motion .reveal-img[data-inview='true'] img {
   transform: scale(1);
 }
 /* line-by-line masked headline reveal */
@@ -181,12 +189,13 @@
 }
 .line-mask > span {
   display: block;
+}
+.motion .line-mask > span {
   transform: translate3d(0, 105%, 0);
   transition: transform 1.25s var(--ease-out-expo);
   transition-delay: var(--delay, 0ms);
 }
-[data-inview='true'] .line-mask > span,
-.line-mask[data-inview='true'] > span {
+.motion [data-inview='true'] .line-mask > span {
   transform: none;
 }
 
@@ -211,14 +220,6 @@
   animation: menu-in 0.8s var(--ease-out-expo) both;
 }
 
-@keyframes marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-.marquee {
-  animation: marquee 38s linear infinite;
-}
 @keyframes hero-zoom {
   from {
     transform: scale(1.14);
@@ -247,8 +248,9 @@
   html {
     scroll-behavior: auto;
   }
+  /* belt and braces: the `motion` class is never added under reduced motion */
   .reveal,
-  .reveal-img,
+  .reveal-img > *,
   .reveal-img img,
   .line-mask > span {
     opacity: 1 !important;
@@ -256,7 +258,6 @@
     clip-path: none !important;
     transition: none !important;
   }
-  .marquee,
   .hero-zoom,
   #mobile-menu,
   #mobile-menu .menu-item,

@@ -89,11 +89,23 @@ export function Nav() {
               className={`btn hidden min-h-11 px-5 sm:inline-flex ${
                 solid ? 'bg-charcoal text-ivory hover:bg-ink hover:text-sky' : 'bg-ivory text-charcoal hover:bg-sky'
               }`}
-              aria-label={`${booking.label}: ${booking.hint}`}
+              aria-label={`${booking.label}, ${business.phoneDisplay}`}
             >
               {booking.label}
               <Arrow />
             </a>
+            {/* Narrow screens: one-tap call without opening the menu */}
+            {!open && (
+              <a
+                href={booking.href}
+                className={`btn min-h-10 gap-2 px-3.5 text-[0.72rem] tracking-[0.16em] sm:hidden ${
+                  solid ? 'bg-charcoal text-ivory' : 'bg-ivory text-charcoal'
+                }`}
+                aria-label={`${booking.label}, ${business.phoneDisplay}`}
+              >
+                {booking.short}
+              </a>
+            )}
             <button
               ref={toggleRef}
               type="button"
@@ -128,7 +140,7 @@ export function Nav() {
         aria-modal="true"
         aria-label="Site menu"
         hidden={!open}
-        className="on-dark grain fixed inset-0 -z-10 flex flex-col overflow-y-auto bg-charcoal px-4 pb-8 pt-24 text-ivory sm:px-6 lg:hidden"
+        className="on-dark grain fixed inset-0 -z-10 flex h-[100dvh] flex-col overflow-y-auto overscroll-contain bg-charcoal px-4 pb-6 pt-20 text-ivory sm:px-6 sm:pb-8 sm:pt-24 lg:hidden"
       >
         <ol className="flex flex-col">
           {nav.map((n, i) => (
@@ -136,10 +148,10 @@ export function Nav() {
               <a
                 href={`#${n.id}`}
                 onClick={() => close(false)}
-                className="menu-item group flex items-baseline justify-between gap-4 py-3"
+                className="menu-item group flex min-h-11 items-baseline justify-between gap-4 py-2 sm:py-3"
                 style={{ animationDelay: `${60 + i * 70}ms` }}
               >
-                <span className="display text-[clamp(3.25rem,17vw,6.5rem)] transition-colors group-hover:text-sky">
+                <span className="display text-[clamp(2.5rem,min(16vw,9svh),6.5rem)] transition-colors group-hover:text-sky">
                   {n.label}
                 </span>
                 <span className="eyebrow tabular-nums text-sky">0{i + 1}</span>
@@ -148,18 +160,18 @@ export function Nav() {
           ))}
         </ol>
 
-        <div className="mt-auto pt-10">
+        <div className="mt-auto pt-6 sm:pt-10">
           <a href={booking.href} onClick={() => close(false)} className="btn-primary min-h-14 w-full justify-between">
             {booking.label}
             <Arrow />
           </a>
-          <div className="mt-8 grid grid-cols-2 gap-6 text-sm text-ivory/75">
+          <div className="mt-5 grid grid-cols-2 gap-4 text-sm text-ivory/75 sm:mt-8 sm:gap-6">
             <address className="not-italic">
               {business.street}
               <br />
               {business.city}, {business.region} {business.postal}
             </address>
-            <div className="flex flex-col items-start gap-1">
+            <div className="-my-1.5 flex flex-col items-start [&>a]:py-1.5">
               <a href={business.phoneHref} className="link-underline">
                 {business.phoneDisplay}
               </a>

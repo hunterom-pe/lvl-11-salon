@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script>
+      // Opt in to entrance animations only when they can run safely. Without this
+      // class every section renders fully visible (see "Motion" in src/index.css).
+      ;(function () {
+        try {
+          if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.classList.add('motion')
+          }
+        } catch (e) {}
+      })()
+    </script>
     <title>LVL 11 Salon | Hair Salon in Phoenix, AZ: Cuts, Color, Balayage & Extensions</title>
     <meta
       name="description"

@@ -24,16 +24,13 @@ export function ClientLove() {
             <p className="text-lg leading-relaxed text-charcoal/85 sm:text-xl">
               Phoenix has been talking about LVL 11 for years. We’d rather you hear it from them than from us.
             </p>
-            <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <a href={business.reviewsUrl} target="_blank" rel="noopener noreferrer" className="btn-dark min-h-14 px-7">
-                Read our Google reviews
+            <div className="mt-8">
+              <a href={business.googleListingUrl} target="_blank" rel="noopener noreferrer" className="btn-dark min-h-14 px-7">
+                Reviews on Google Maps
                 <Arrow dir="up-right" />
-                <span className="sr-only">(opens Google Maps in a new tab)</span>
+                <span className="sr-only">(opens LVL 11 Salon’s Google Maps listing in a new tab)</span>
               </a>
-              <a href={business.reviewsUrl} target="_blank" rel="noopener noreferrer" className="eyebrow link-underline whitespace-nowrap px-1 py-3">
-                Been in? Leave one
-                <span className="sr-only">(opens Google Maps in a new tab)</span>
-              </a>
+              <p className="mt-3 text-sm text-charcoal/70">Read what clients say, or leave your own review on the listing.</p>
             </div>
           </Reveal>
         </div>
@@ -45,7 +42,7 @@ export function ClientLove() {
           {/* oversized quote mark: purely typographic */}
           <span
             aria-hidden="true"
-            className="accent pointer-events-none absolute -left-4 -top-16 select-none text-[16rem] leading-none text-ivory sm:-top-20 sm:text-[20rem] lg:-left-24 lg:top-24 lg:text-[26rem]"
+            className="accent pointer-events-none absolute -left-3 -top-9 select-none text-[12rem] leading-none text-ivory sm:-left-4 sm:-top-20 sm:text-[20rem] lg:-left-24 lg:top-24 lg:text-[26rem]"
           >
             “
           </span>

@@ -22,9 +22,14 @@ export const business = {
   directionsUrl:
     'https://www.google.com/maps/dir/?api=1&destination=' +
     encodeURIComponent('LVL 11 Salon, 4626 N 16th St Suite 104, Phoenix, AZ 85016'),
-  reviewsUrl:
-    'https://www.google.com/maps/search/?api=1&query=' +
-    encodeURIComponent('LVL 11 Salon 4626 N 16th St Phoenix AZ 85016'),
+  /**
+   * The salon's Google Maps listing, where reviews are read and written. Verified
+   * 2026-11-17: this CID resolves to "LVL 11 Salon", 4626 N 16th St Ste 104,
+   * (602) 975-6541, lvl11phx.com (feature id 0x872b139b07670ac3:0xc342c0dcf6e72b9d).
+   * A direct "write a review" link needs the listing's Place ID, which couldn't be
+   * verified, so the site links to the listing only.
+   */
+  googleListingUrl: 'https://www.google.com/maps?cid=14070020241126534045',
 } as const
 
 /**
@@ -34,8 +39,9 @@ export const business = {
 export const booking = {
   href: business.phoneHref,
   external: false,
-  label: 'Book an appointment',
-  short: 'Book',
+  /** Phone-based for now, so the wording says so. Change to 'Book online' etc. with a real booking URL. */
+  label: 'Call to book',
+  short: 'Call',
   hint: `Call ${business.phoneDisplay}`,
 }
 

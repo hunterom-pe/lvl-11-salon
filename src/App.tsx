@@ -1,6 +1,6 @@
+import { useInitialHashScroll } from './lib/hooks'
 import { Nav } from './sections/Nav'
 import { Hero } from './sections/Hero'
-import { Ticker } from './sections/Ticker'
 import { Services } from './sections/Services'
 import { Experience } from './sections/Experience'
 import { Work } from './sections/Work'
@@ -10,6 +10,7 @@ import { Visit } from './sections/Visit'
 import { Footer } from './sections/Footer'
 
 export default function App() {
+  useInitialHashScroll()
   return (
     <>
       <a
@@ -21,7 +22,6 @@ export default function App() {
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <Ticker />
         <Services />
         <Experience />
         <Work />

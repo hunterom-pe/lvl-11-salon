@@ -45,7 +45,8 @@ npm run brand      # regenerate logo SVGs, favicon, app icons, og-image, src/bra
   section shows a "profiles dropping soon" state. Preview the card layout with placeholder
   profiles at `/?preview=team` (clearly labelled; never shown on the normal page).
 - **Online booking:** change `booking.href` (and set `external: true`) in `src/content/site.ts`.
-  Every "Book" CTA updates. Until then, all booking CTAs **call the salon**.
+  Every booking CTA updates; also change `booking.label` (currently "Call to book"). Until then, all booking
+  CTAs **call the salon**, including a one-tap "Call" button in the mobile header.
 
 ## The logo
 
@@ -83,7 +84,9 @@ final logo artwork, replace `BRUSH_D` / the SVGs with it.
 - [ ] **All marketing copy** (headlines, pillars, service blurbs) is concept copy written in the brand voice. Have the owners approve the tone and any implied claims ("independent salon on 16th Street", "Phoenix has been talking about LVL 11 for years").
 - [ ] **Stylists:** names, photos, specialties, individual booking links and Instagram handles. None are shown; nothing was invented.
 - [ ] **Reviews:** no review text is shown. Add only real, attributable quotes with permission, and a verified Google rating if desired.
-- [ ] **Google reviews link** currently opens a Google Maps search for the salon. Replace it with the exact Place URL or a "write a review" link from their Google Business Profile.
+- [ ] **Google review link:** the site links to the verified Google Maps listing (`googleListingUrl`, a CID URL that resolves to
+  LVL 11 Salon at 4626 N 16th St). A direct "write a review" link needs the listing's Place ID; get it from their
+  Google Business Profile and add a separate "Leave a review" action.
 - [ ] **Booking system:** confirm whether they use one (Vagaro, GlossGenius, Square, etc.).
 - [ ] **Logo:** owner approval of the brush wordmark concept.
 - [ ] **Established date:** deliberately not stated. "Since at least 2021" is unconfirmed.
@@ -109,9 +112,11 @@ final logo artwork, replace `BRUSH_D` / the SVGs with it.
 - `tsc -b` and `vite build`: pass. JS is ~101 KB gzipped; fonts are subset and self-hosted.
 - `oxlint` with `jsx-a11y`: no warnings.
 - axe-core (WCAG 2.1 A/AA + best practice) at 375 px and 1440 px: 0 violations.
-- No horizontal overflow at 375 / 390 / 430 / 768 / 1024 / 1440 px.
-- Keyboard: skip link; mobile menu has focus trap, Escape to close, focus return and scroll lock.
-- `prefers-reduced-motion`: disables reveals, parallax, marquee and zoom.
+- No horizontal overflow at 320 / 375 / 390 / 430 / 768 / 1024 / 1440 px.
+- Keyboard: skip link; mobile menu has focus trap, Escape to close, focus return and scroll lock, and fits a 320 × 568 screen.
+- Motion is a progressive enhancement: content is visible by default, and entrance animations only switch on (`html.motion`)
+  when JS runs and the visitor hasn't asked for reduced motion. Reloading `/#work` lands on the lookbook.
+- `prefers-reduced-motion`: no reveals, parallax or zoom.
 - No dead links: every anchor target exists; call, email and directions links work.
 
 ## Photo credits (temporary, Unsplash License)
